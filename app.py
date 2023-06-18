@@ -12,8 +12,9 @@ region_df = pd.read_csv('noc_regions.csv')
 df = preprocessor.preprocess(df,region_df)
 
 ##
-st.sidebar.title("Olympics Analysis")
-st.sidebar.image('https://e7.pngegg.com/pngimages/1020/402/png-clipart-2024-summer-olympics-brand-circle-area-olympic-rings-olympics-logo-text-sport.png')
+st.sidebar.markdown("# Olympics 🏅 Analysis")
+st.sidebar.markdown("An interactive dashboard to explore historical Olympics data.")
+st.sidebar.image('https://assets.editorial.aetnd.com/uploads/2010/01/gettyimages-466313493-2.jpg?width=1920&height=960&crop=1920%3A960%2Csmart&quality=75')
 user_menu = st.sidebar.radio(
     'Select an Option',
     ('Basic Stats','Analysis Over Time','Total Medals By Each Country','Total Medals In Each Years','Medals Filter By Country And Year','Trend Analysis for a Country',
