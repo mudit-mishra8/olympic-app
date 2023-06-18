@@ -137,18 +137,29 @@ if user_menu == 'Trend Analysis In Every Sport for a Country':
     country = country[1:]
     selected_country = st.sidebar.selectbox("Select Country", country)
 
-    st.title("Medals Over time In Every Sport")
+    st.title("Medals Over Time In Every Sport")
+
+    # Remove NaN values in 'Medal' column
     temp_df = df.dropna(subset=['Medal'])
-    temp_df.drop_duplicates(subset=['Team', 'NOC', 'Games', 'Year', 'City', 'Sport', 'Event', 'Medal'], inplace=True)
+
+    # Remove duplicates and assign the result back to temp_df
+    temp_df = temp_df.drop_duplicates(subset=['Team', 'NOC', 'Games', 'Year', 'City', 'Sport', 'Event', 'Medal'])
+
+    # Filter by the selected country
     new_df = temp_df[temp_df['region'] == selected_country]
 
-    fig, ax = plt.subplots(figsize=(20, 20))
-    ax = sns.heatmap(
-        new_df.pivot_table(index='Sport', columns='Year', values='Medal', aggfunc='count').fillna(0).astype('int'),
-        annot=True)
-    st.pyplot(fig)
+    # Create a pivot table
+    pivot_table = new_df.pivot_table(index='Sport', columns='Year', values='Medal', aggfunc='count').fillna(0).astype(
+        'int')
 
-
+    # Check if the pivot_table is empty
+    if not pivot_table.empty:
+        # Plot the heatmap
+        fig, ax = plt.subplots(figsize=(20, 20))
+        sns.heatmap(pivot_table, annot=True, ax=ax)
+        st.pyplot(fig)
+    else:
+        st.write("No data available for the selected country.")
 
 if user_menu == 'Top Atheletes for a Country':
     st.sidebar.header("Select a Country To get Top Athletes")
