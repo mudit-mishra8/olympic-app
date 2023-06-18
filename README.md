@@ -7,7 +7,7 @@ This project is an analysis of historical Summer Olympics data. The analysis cov
 
 I have created an interactive web application to visualize the findings of my analysis. You can explore the data and understand the trends in Olympic Games over the years.
 
-🔗 [Explore the App](https://olympics-analysis-by-mudit-app-d05d3c3a4d2c.herokuapp.com)
+🔗 [Explore the App](https://olympics-analysis-by-mudit-app-d05d3c3a4d2c.herokuapp.com) 
 
 ## Features ✨
 
